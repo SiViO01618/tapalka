@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тапалка</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        h1 {
+            font-size: 24px;
+        }
+        button {
+            padding: 20px;
+            font-size: 20px;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Добро пожаловать в Тапалку!</h1>
+    <p>Нажмите кнопку как можно больше раз!</p>
+    <div id="counter">0</div>
+    <button id="tap-btn">Tap!</button>
+
+    <script>
+        // Инициализация Web App API
+        const telegram = window.Telegram.WebApp;
+
+        // Счетчик тапов
+        let count = 0;
+
+        // Обновление интерфейса счётчика
+        function updateCounter() {
+            document.getElementById("counter").innerText = count;
+        }
+
+        // Обработчик нажатия на кнопку
+        document.getElementById("tap-btn").addEventListener("click", () => {
+            count++;
+            updateCounter();
+        });
+
+        // Настройка главной кнопки Telegram для завершения сессии
+        telegram.MainButton.text = "Закрыть Тапалку";
+        telegram.MainButton.show();
+    </script>
+
+</body>
+</html>
